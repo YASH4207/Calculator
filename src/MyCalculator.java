@@ -1,7 +1,6 @@
 import java.awt.*;  
 import java.awt.event.*;  
-/*********************************************/  
-  
+
 public class MyCalculator extends Frame  {
 
 	public boolean setClear=true;  
@@ -24,7 +23,7 @@ public class MyCalculator extends Frame  {
 	final int FRAME_WIDTH=325,FRAME_HEIGHT=325;  
 	final int HEIGHT=30, WIDTH=30, H_SPACE=10,V_SPACE=10;  
 	final int TOPX=30, TOPY=50;  
-///////////////////////////  
+
 	MyCalculator(String frameText)	{  
 		super(frameText);  
   
@@ -90,7 +89,7 @@ public class MyCalculator extends Frame  {
 		setSize(FRAME_WIDTH,FRAME_HEIGHT);  
 		setVisible(true);  
 	}  
-//////////////////////////////////  
+
 	static String getFormattedText(double temp)  
 	{  
 		String resText=""+temp;  
@@ -98,7 +97,7 @@ public class MyCalculator extends Frame  {
 			resText=resText.substring(0,resText.length()-2);  
 		return resText;  
 	}  
-////////////////////////////////////////  
+
 	public static void main(String []args)  
 	{  
 		new MyCalculator("Calculator - JavaTpoint");  
@@ -109,7 +108,7 @@ public class MyCalculator extends Frame  {
 class MyDigitButton extends Button implements ActionListener  {  
 	MyCalculator cl;  
   
-//////////////////////////////////////////  
+
 	MyDigitButton(int x,int y, int width,int height,String cap, MyCalculator clc)  {  
 		super(cap);  
 		setBounds(x,y,width,height);  
@@ -117,12 +116,12 @@ class MyDigitButton extends Button implements ActionListener  {
 		this.cl.add(this);  
 		addActionListener(this);  
 	}  
-////////////////////////////////////////////////  
+
 	static boolean isInString(String s, char ch)  {  
 		for(int i=0; i<s.length();i++) if(s.charAt(i)==ch) return true;  
 		return false;  
 	}  
-/////////////////////////////////////////////////  
+
 	public void actionPerformed(ActionEvent ev)  
 	{  
 		String tempText=((MyDigitButton)ev.getSource()).getLabel();  
@@ -160,7 +159,7 @@ class MyOperatorButton extends Button implements ActionListener  {
 		this.cl.add(this);  
 		addActionListener(this);  
 	}  
-///////////////////////  
+
 	public void actionPerformed(ActionEvent ev)  {  
 		String opText=((MyOperatorButton)ev.getSource()).getLabel();  
  
@@ -188,7 +187,7 @@ class MyOperatorButton extends Button implements ActionListener  {
 			cl.op=opText.charAt(0);  
 			return;  
 		}  
-// process = button pressed  
+
 		switch(cl.op)  {  
 		case '+':  
 			temp+=cl.number;break;  
@@ -213,12 +212,10 @@ class MyOperatorButton extends Button implements ActionListener  {
 		}//actionPerformed  
 	}//class  
   
-/****************************************/  
-  
 class MyMemoryButton extends Button implements ActionListener  {  
 	MyCalculator cl;  
   
-/////////////////////////////////  
+
 	MyMemoryButton(int x,int y, int width,int height,String cap, MyCalculator clc)  {  
 		super(cap);  
 		setBounds(x,y,width,height);  
@@ -226,7 +223,7 @@ class MyMemoryButton extends Button implements ActionListener  {
 		this.cl.add(this);  
 		addActionListener(this);  
 	}  
-////////////////////////////////////////////////  
+
 	public void actionPerformed(ActionEvent ev)  {  
 		char memop=((MyMemoryButton)ev.getSource()).getLabel().charAt(1);  
   
@@ -251,8 +248,6 @@ class MyMemoryButton extends Button implements ActionListener  {
 	}//actionPerformed  
 }//class  
   
-/*****************************************/  
-  
 class MySpecialButton extends Button implements ActionListener  {  
 	MyCalculator cl;  
   
@@ -263,14 +258,13 @@ class MySpecialButton extends Button implements ActionListener  {
 		this.cl.add(this);  
 		addActionListener(this);  
 }  
-//////////////////////  
+
 	static String backSpace(String s)  {  
 		String Res="";  
 		for(int i=0; i<s.length()-1; i++) Res+=s.charAt(i);  
 		return Res;  
 }  
-  
-//////////////////////////////////////////////////////////  
+
 public void actionPerformed(ActionEvent ev)  {  
 	String opText=((MySpecialButton)ev.getSource()).getLabel();  
 //check for backspace button  
